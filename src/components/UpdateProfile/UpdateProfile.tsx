@@ -100,7 +100,7 @@ const UpdateProfile = (props: Props) => {
         <div className="card-body py-5 px-md-5">
           <div className="row d-flex justify-content-center">
             <div className="col-lg-8">
-              <h2 className="fw-bold mb-5 text-white"> Update Profil</h2>
+              <h2 className="fw-bold mb-5 text-white"> PROFİL BİLGİLERİNİ GÜNCELLE</h2>
               <Formik
                 initialValues={formValues}
                 validationSchema={validationSchema}

@@ -17,8 +17,8 @@ export enum Available{
     NO='NO',
 }
 export enum FuelType {
-    DIESEL = 'DIESEL',
-    GASOLINE = 'GASOLINE',
+    DIESEL = 'Dizel',
+    GASOLINE = 'Benzin',
   }
 export enum TransmissionType {
     AUTOMATIC = 'AUTOMATIC',

@@ -62,14 +62,14 @@ const UpdateBrandForm = (props: Props) => {
         </div>
 
         <div className="mb-3">
-          <label className="form-label">Name</label>
+          <label className="form-label">İsim</label>
           <Field type="text"  className={`form-control ${
                 errors.name && touched.name ? "is-invalid" : ""
               }`} name="name" />
           <ErrorMessage name="name" component="div" className="text-danger" />
         </div>
         <div className="mb-3">
-          <label htmlFor="logoPath" className="form-label">LogoPath</label>
+          <label htmlFor="logoPath" className="form-label">Logo Yolu</label>
           <Field type="text" className={`form-control ${
                 errors.logoPath && touched.logoPath ? "is-invalid" : ""
               }`} name="logoPath" />
@@ -77,7 +77,7 @@ const UpdateBrandForm = (props: Props) => {
         </div>
 
         <button type="submit" className="btn btn-primary">
-          Update Brand
+          Marka Güncelle
         </button>
       </Form>
       )}

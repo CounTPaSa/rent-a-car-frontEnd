@@ -35,7 +35,7 @@ const Home = (props: Props) => {
               <div>
                 {" "}
                 <h3 className="fs-2">{carsState.cars.length}</h3>{" "}
-                <p className="fs-5">Cars</p>{" "}
+                <p className="fs-5">Araçlar</p>{" "}
               </div>{" "}
             </div>{" "}
           </div>{" "}
@@ -45,7 +45,7 @@ const Home = (props: Props) => {
               {" "}
               <div>
                 {" "}
-                <h3 className="fs-2">{colorsState.colors.length}</h3> <p className="fs-5">Colors</p>{" "}
+                <h3 className="fs-2">{colorsState.colors.length}</h3> <p className="fs-5">Renkler</p>{" "}
               </div>{" "}
             </div>{" "}
           </div>{" "}
@@ -55,7 +55,7 @@ const Home = (props: Props) => {
               {" "}
               <div>
                 {" "}
-                <h3 className="fs-2">{brandsState.brands.length}</h3> <p className="fs-5">Brands</p>{" "}
+                <h3 className="fs-2">{brandsState.brands.length}</h3> <p className="fs-5">Markalar</p>{" "}
               </div>{" "}
             </div>{" "}
           </div>{" "}
@@ -65,7 +65,7 @@ const Home = (props: Props) => {
               {" "}
               <div>
                 {" "}
-                <h3 className="fs-2">{modelsState.models.length}</h3> <p className="fs-5">Models</p>{" "}
+                <h3 className="fs-2">{modelsState.models.length}</h3> <p className="fs-5">Modeller</p>{" "}
               </div>{" "}
             </div>{" "}
           </div>{" "}

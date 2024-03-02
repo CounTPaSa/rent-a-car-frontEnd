@@ -53,23 +53,23 @@ const AddCarForm = (props: Props) => {
     plate: string()
       .matches(
         /^(0[1-9]|[1-7][0-9]|8[01])((\s?[a-zA-Z]\s?)(\d{4,5})|(\s?[a-zA-Z]{2}\s?)(\d{3,4})|(\s?[a-zA-Z]{3}\s?)(\d{2,3}))/,
-        "Invalid plate number"
+        "Geçersiz plaka"
       )
-      .required("Plate is required"),
-    kilometer: number()
-      .min(0, "Car kilometer can not be less than 0")
-      .required("Kilometer is required"),
+      .required("Plaka bilgisi zorunludur"),
+      kilometer: number()
+      .min(0, "Aracın kilometresi 0'dan küçük olamaz")
+      .required("Kilometre alanı zorunludur"),
     dailyPrice: number()
-      .min(0, "Daily price can not be less than 0")
-      .required("Daily Price is required"),
-    minFindeksRate: number().required("Min. Findeks Rate is required"),
-    imagePath: string().required("Imagepath is required"),
+      .min(0, "Günlük ücret 0'dan az olamaz")
+      .required("Günlük ücret alanı zorunludur"),
+    minFindeksRate: number().required("Min findeks değeri zorunludur"),
+    imagePath: string().required(""),
     modelYear: number()
-      .min(2005, "Model year can not be less than 2005!")
-      .max(2024, "Model year can not be greater than 2024!")
-      .required("Model Year is required"),
-    modelId: number().required("Model is required"),
-    colorId: number().required("Color is required"),
+      .min(2005, "Model yılı 2005 yılından küçük olamaz!")
+      .max(2024, "Model yılı 2024 yılından büyük olamaz")
+      .required("Model yılı zorunludur"),
+    colorId: number().required("Renk değeri zorunludur"),
+    modelId: number().required("model id değeri zorunludur"),
   });
 
   const handleAddCar = async (
@@ -98,7 +98,7 @@ const AddCarForm = (props: Props) => {
         <Form>
           <div className="mb-3">
             <label htmlFor="plate" className="form-label">
-              Plate
+              Plaka
             </label>
             <Field
               type="text"
@@ -115,7 +115,7 @@ const AddCarForm = (props: Props) => {
           </div>
           <div className="mb-3">
             <label htmlFor="kilometer" className="form-label">
-              Kilometer
+              Kilometre
             </label>
             <Field
               type="number"
@@ -132,7 +132,7 @@ const AddCarForm = (props: Props) => {
           </div>
           <div className="mb-3">
             <label htmlFor="dailyPrice" className="form-label">
-              dailyPrice
+              Günlük Ücret
             </label>
             <Field
               type="number"
@@ -149,7 +149,7 @@ const AddCarForm = (props: Props) => {
           </div>
           <div className="mb-3">
             <label htmlFor="minFindeksRate" className="form-label">
-              minFindeksRate
+            Minimum Findeks Oranı
             </label>
             <Field
               type="number"
@@ -169,7 +169,7 @@ const AddCarForm = (props: Props) => {
 
           <div className="mb-3">
             <label htmlFor="modelYear" className="form-label">
-              modelYear
+              Model Yılı
             </label>
             <Field
               type="number"
@@ -186,7 +186,7 @@ const AddCarForm = (props: Props) => {
           </div>
           <div className="mb-3">
             <label htmlFor="imagePath" className="form-label">
-              imagePath
+            Görsel yolu
             </label>
             <Field
               type="text"
@@ -203,10 +203,10 @@ const AddCarForm = (props: Props) => {
           </div>
           <div className="mb-3">
             <label htmlFor="colorId" className="form-label">
-              Color
+              Renk
             </label>
             {""}
-            <Field as="select" name="colorId">
+            <Field as="select" name="colorId" className="form-select">
               <option value="">Renk seçin</option>
               {colorsState.colors.map((color: any) => (
                 <option key={color.id} value={color.id}>
@@ -225,7 +225,7 @@ const AddCarForm = (props: Props) => {
               Model
             </label>
             {""}
-            <Field as="select" name="modelId">
+            <Field as="select" name="modelId" className="form-select">
               <option value="">Model seçin</option>
               {modelsState.models.map((model: any) => (
                 <option key={model.id} value={model.id}>
@@ -241,7 +241,7 @@ const AddCarForm = (props: Props) => {
           </div>
           <div className="mb-3">
             <label htmlFor="fuelType" className="form-label">
-              Fuel Type
+              Yakıt Tipi
             </label>
             {""}
             <Field as="select" name="fuelType" className="form-select">
@@ -261,8 +261,7 @@ const AddCarForm = (props: Props) => {
           </div>
           <div className="mb-3">
             <label htmlFor="transmissionType" className="form-label">
-              Transmission Type
-            </label>
+            Şanzıman Tipi            </label>
             {""}
             <Field as="select" name="transmissionType" className="form-select">
               {Object.values(TransmissionType).map(
@@ -283,7 +282,7 @@ const AddCarForm = (props: Props) => {
           </div>
           <div className="mb-3">
             <label htmlFor="carType" className="form-label">
-              Car Type
+              Araç Tipi
             </label>
             {""}
             <Field as="select" name="carType" className="form-select">
@@ -325,7 +324,7 @@ const AddCarForm = (props: Props) => {
           </div>
 
           <button type="submit" className="btn btn-primary">
-            Add Car
+            Araç Ekle
           </button>
         </Form>
       )}

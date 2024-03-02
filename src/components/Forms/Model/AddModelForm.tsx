@@ -61,7 +61,7 @@ const AddModelForm = (props: Props) => {
         <Form>
           <div className="mb-3">
             <label htmlFor="name" className="form-label">
-              Name
+              İsim
             </label>
             <Field
               type="text"
@@ -73,10 +73,10 @@ const AddModelForm = (props: Props) => {
             <ErrorMessage name="name" component="div" className="text-danger" />
           </div>
           <div className="mb-3">
-            <label htmlFor="brandId" className="form-label">
-              Brand
+            <label htmlFor="brandId" className="form-label" >
+              Marka
             </label>{""}
-            <Field as="select" name="brandId">
+            <Field as="select" name="brandId" className="form-select">
               <option value="">Marka seçin</option>
               {brandsState.brands.map((brand: any) => (
               <option key={brand.id} value={brand.id}>
@@ -96,7 +96,7 @@ const AddModelForm = (props: Props) => {
             className="btn btn-primary"
             onClick={() => console.log("Button clicked")}
           >
-            Add Model
+            Model Ekle
           </button>
         </Form>
       )}

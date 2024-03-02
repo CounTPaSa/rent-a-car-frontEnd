@@ -125,7 +125,7 @@ const validationSchema = object().shape({
                     <div className="right-column">
                       <div>Plaka: {car && car.plate}</div>
                       <div>Renk: {car && car.color_id.name}</div>
-                      <div>Kilometer: {car && car.kilometer}</div>
+                      <div>Kilometre: {car && car.kilometer}</div>
                     </div>
                   </div>
                 </div>

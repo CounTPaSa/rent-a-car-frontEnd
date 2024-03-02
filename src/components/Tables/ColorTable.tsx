@@ -47,13 +47,13 @@ const ColorTable = (props: Props) => {
     <>
       <table className="table table-hover table-borderless caption-top bg-white rounded mt-2">
         <caption>
-          <span className="cars-p">Colors</span> {""}
+          <span className="cars-p">Renkler</span> {""}
           <button
             type="button"
             className="btn btn-primary"
             onClick={handleToggleAddModal}
           >
-            Add New Color
+            Yeni Renk Ekle
           </button>{" "}
           {""}
           
@@ -61,8 +61,8 @@ const ColorTable = (props: Props) => {
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Code</th>
+            <th scope="col">İsim</th>
+            <th scope="col">Renk Kodu</th>
           </tr>
         </thead>
         <tbody>
@@ -74,7 +74,7 @@ const ColorTable = (props: Props) => {
 
               <td>
                 <button type="button" className="btn btn-danger" onClick={() => handleDeleteColor(color.id)}>
-                  Delete
+                  Sil
                 </button>
               </td>
               <td>
@@ -83,7 +83,7 @@ const ColorTable = (props: Props) => {
                   className="btn btn-success"
                   onClick={() => handleToggleUpdateModal(color.id)}
                 >
-                  Update
+                  Güncelle
                 </button>
               </td>
             </tr>
@@ -92,7 +92,7 @@ const ColorTable = (props: Props) => {
       </table>
       <Modal show={showAddModal} onHide={handleToggleAddModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Add New Color</Modal.Title>
+          <Modal.Title>Yeni Renk Ekle</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <AddColorForm />
@@ -102,7 +102,7 @@ const ColorTable = (props: Props) => {
 
       <Modal show={showUpdateModal} onHide={handleCloseUpdateModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Update Color</Modal.Title>
+          <Modal.Title>Renk Güncelle</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <UpdateColorForm selectedColorId={selectedColorId}  />

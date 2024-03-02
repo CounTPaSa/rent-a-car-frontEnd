@@ -47,7 +47,7 @@ const AddColorForm = (props: Props) => {
         <Form>
           <div className="mb-3">
             <label htmlFor="name" className="form-label">
-              Name
+              İsim
             </label>
             <Field
               type="text"
@@ -60,7 +60,7 @@ const AddColorForm = (props: Props) => {
           </div>
           <div className="mb-3">
             <label htmlFor="code" className="form-label">
-              Code
+              Renk Kodu
             </label> 
             <Field
               type="text"
@@ -81,7 +81,7 @@ const AddColorForm = (props: Props) => {
             className="btn btn-primary"
             onClick={() => console.log("Button clicked")}
           >
-            Add Color
+            Renk Ekle
           </button>
         </Form>
       )}

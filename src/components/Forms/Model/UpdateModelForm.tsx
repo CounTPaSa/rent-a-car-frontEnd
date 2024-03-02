@@ -54,7 +54,7 @@ const UpdateModelForm = (props: Props) => {
         </div>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">
-            Name
+            İsim
           </label>
           <Field
             type="text"
@@ -67,10 +67,10 @@ const UpdateModelForm = (props: Props) => {
         </div>
         <div className="mb-3">
           <label htmlFor="brandId" className="form-label">
-            Brand 
+            Marka 
           </label> 
-          <Field as="select" name="brandId">
-              <option value="">Select a brand</option>
+          <Field as="select" name="brandId" className="form-select" >
+              <option value="">Marka seçin</option>
               {brandsState.brands.map((brand: any) => (
               <option key={brand.id} value={brand.id}>
                 {brand.name}
@@ -89,7 +89,7 @@ const UpdateModelForm = (props: Props) => {
           className="btn btn-primary"
           onClick={() => console.log("Button clicked")}
         >
-          Update Model
+         Model Güncelle
         </button>
       </Form>
     )}

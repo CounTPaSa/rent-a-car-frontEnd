@@ -68,7 +68,7 @@ const RentalPayment = (props: Props) => {
             <input
               className="form-control"
               name="name"
-              placeholder="Name Surname"
+              placeholder="İsim Soyisim"
               type="text"
               onChange={(e) => handleChangeForm(e)}
               value={cardInfos.name}
@@ -182,7 +182,7 @@ const RentalPayment = (props: Props) => {
                     )}px`,
                   }}
                 >
-                  {cardInfos.name ? cardInfos.name : "Name Surname"}
+                  {cardInfos.name ? cardInfos.name : "İsim Soyisim"}
                 </div>
               </div>
               <div className="col text-end">

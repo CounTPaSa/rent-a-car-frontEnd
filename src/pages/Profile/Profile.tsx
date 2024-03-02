@@ -67,15 +67,16 @@ const Profile = (props: Props) => {
         return age >= 21;
       }),
   });
-  const handleSubmit = async (values: AddCustomerRequest) => {
+  const handleSubmit = async (values: AddCustomerRequest, { resetForm }: FormikHelpers<AddCustomerRequest>) => {
     try {
-      console.log("Form iletildi", values);
-      await dispatch(addCustomer(values));
-      navigate("/login");
+        console.log("Form iletildi", values);
+        await dispatch(addCustomer(values));
+        resetForm(); 
+        navigate("/login");
     } catch (error: any) {
-      console.log("Hata:", error);
+        console.log("Hata:", error);
     }
-  };
+};
 
   return (
     <div className="text-center">

@@ -1,5 +1,5 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { number, object, string } from "yup";
 import { AppDispatch } from "../../../store/configureStore";
@@ -14,6 +14,8 @@ import {
   TransmissionType,
 } from "../../../models/cars/requests/addCarRequest";
 import { GetAllCarResponse } from "../../../models/cars/response/getAllCarResponse";
+import { GetByIdModelResponse } from "../../../models/model/response/getByIdModelResponse";
+import { GetAllModelResponse } from "../../../models/model/response/getAllModelResponse";
 
 type Props = {
   selectedCarId: number | null;
@@ -43,6 +45,8 @@ const UpdateCarForm = (props: Props) => {
     dispatch(fetchColors());
   }, [dispatch]);
 
+ 
+
   const initialValues = {
     id: selectedCar?.id || 0,
     plate: selectedCar?.plate || "",
@@ -52,33 +56,37 @@ const UpdateCarForm = (props: Props) => {
     minFindeksRate: selectedCar?.minFindeksRate || 0,
     imagePath: selectedCar?.imagePath || "",
     modelId: selectedCar?.model_id || 0,
+
     colorId: selectedCar?.color_id || 0,
     carType: selectedCar?.carType || CarType.ECOHATCHBACK,
     fuelType: selectedCar?.fuelType || FuelType.DIESEL,
-    transmissionType:selectedCar?.transmissionType || TransmissionType.AUTOMATIC,
-    available: selectedCar?.available || Available.NO,  };
+    transmissionType:
+      selectedCar?.transmissionType || TransmissionType.AUTOMATIC,
+    available: selectedCar?.available || Available.NO,
+  };
+
   const validationSchema = object({
-    id: number().required("Id is required"),
+    id: number().required("Id değeri zorunludur"),
     plate: string()
       .matches(
         /^(0[1-9]|[1-7][0-9]|8[01])((\s?[a-zA-Z]\s?)(\d{4,5})|(\s?[a-zA-Z]{2}\s?)(\d{3,4})|(\s?[a-zA-Z]{3}\s?)(\d{2,3}))/,
-        "Invalid plate number"
+        "Geçersiz plaka"
       )
-      .required("Plate is required"),
+      .required("Plaka bilgisi zorunludur"),
     kilometer: number()
-      .min(0, "Car kilometer can not be less than 0")
-      .required("Kilometer is required"),
+      .min(0, "Aracın kilometresi 0'dan küçük olamaz")
+      .required("Kilometre alanı zorunludur"),
     dailyPrice: number()
-      .min(0, "Daily price can not be less than 0")
-      .required("Daily Price is required"),
-    minFindeksRate: number().required("Min. Findeks Rate is required"),
-    imagePath: string().required("Imagepath is required"),
+      .min(0, "Günlük ücret 0'dan az olamaz")
+      .required("Günlük ücret alanı zorunludur"),
+    minFindeksRate: number().required("Min findeks değeri zorunludur"),
+    imagePath: string().required(""),
     modelYear: number()
-      .min(2005, "Model year can not be less than 2005!")
-      .max(2024, "Model year can not be greater than 2024!")
-      .required("Model Year is required"),
-    modelId: number().required("Model is required"),
-    colorId: number().required("Color is required"),
+      .min(2005, "Model yılı 2005 yılından küçük olamaz!")
+      .max(2024, "Model yılı 2024 yılından büyük olamaz")
+      .required("Model yılı zorunludur"),
+    colorId: number().required("Renk değeri zorunludur"),
+    modelId: number().required("model id değeri zorunludur"),
   });
 
   const handleUpdateCar = async (
@@ -89,6 +97,18 @@ const UpdateCarForm = (props: Props) => {
     dispatch(fetchCars());
     resetForm();
   };
+
+  console.log("modelid:", initialValues.modelId);
+
+  const [modelName, setModelName] = useState<string>("");
+
+  useEffect(() => {
+    const selectedModel = modelsState.models.find((model: GetByIdModelResponse) => model.id === initialValues.modelId);
+    if (selectedModel) {
+      setModelName(selectedModel.name);
+    }
+  }, [initialValues.modelId, modelsState.models]);
+
   return (
     <Formik
       initialValues={initialValues}
@@ -111,7 +131,7 @@ const UpdateCarForm = (props: Props) => {
           </div>
           <div className="mb-3">
             <label htmlFor="plate" className="form-label">
-              Plate
+              Plaka
             </label>
             <Field
               type="text"
@@ -128,7 +148,7 @@ const UpdateCarForm = (props: Props) => {
           </div>
           <div className="mb-3">
             <label htmlFor="kilometer" className="form-label">
-              Kilometer
+              Kilometre
             </label>
             <Field
               type="number"
@@ -145,7 +165,7 @@ const UpdateCarForm = (props: Props) => {
           </div>
           <div className="mb-3">
             <label htmlFor="dailyPrice" className="form-label">
-              dailyPrice
+              Günlük Ücret
             </label>
             <Field
               type="number"
@@ -162,7 +182,7 @@ const UpdateCarForm = (props: Props) => {
           </div>
           <div className="mb-3">
             <label htmlFor="minFindeksRate" className="form-label">
-              minFindeksRate
+              Minimum Findeks Oranı
             </label>
             <Field
               type="number"
@@ -182,7 +202,7 @@ const UpdateCarForm = (props: Props) => {
 
           <div className="mb-3">
             <label htmlFor="modelYear" className="form-label">
-              modelYear
+              Model Yılı
             </label>
             <Field
               type="number"
@@ -199,7 +219,7 @@ const UpdateCarForm = (props: Props) => {
           </div>
           <div className="mb-3">
             <label htmlFor="imagePath" className="form-label">
-              imagePath
+              Görsel yolu
             </label>
             <Field
               type="text"
@@ -216,11 +236,10 @@ const UpdateCarForm = (props: Props) => {
           </div>
           <div className="mb-3">
             <label htmlFor="colorId" className="form-label">
-              Color
+              Renk
             </label>
             {""}
-            <Field as="select" name="colorId">
-              <option value="">Renk seçin</option>
+            <Field as="select" name="colorId" className="form-select">
               {colorsState.colors.map((color: any) => (
                 <option key={color.id} value={color.id}>
                   {color.name}
@@ -237,15 +256,18 @@ const UpdateCarForm = (props: Props) => {
             <label htmlFor="modelId" className="form-label">
               Model
             </label>
-            {""}
-            <Field as="select" name="modelId">
-              <option value="">Model seçin</option>
-              {modelsState.models.map((model: any) => (
-                <option key={model.id} value={model.id}>
-                  {model.name}
-                </option>
-              ))}
-            </Field>
+            <Field as="select" name="modelId" className="form-select">
+      {modelsState.models.map((model: GetByIdModelResponse) => (
+        <option
+          key={model.id}
+          value={model.id}
+          selected={initialValues.modelId === model.id}
+        >
+          {model.name}
+        </option>
+      ))}
+    </Field>
+
             <ErrorMessage
               name="modelId"
               component="div"
@@ -278,8 +300,7 @@ const UpdateCarForm = (props: Props) => {
           </div>
           <div className="mb-3">
             <label htmlFor="transmissionType" className="form-label">
-              Yakıt Tipi
-            </label>
+            Şanzıman Tipi            </label>
             {""}
             <Field
               as="select"
@@ -329,7 +350,7 @@ const UpdateCarForm = (props: Props) => {
           </div>
           <div className="mb-3">
             <label htmlFor="available" className="form-label">
-            Araç müsait mi?
+              Araç müsait mi?
             </label>
             {""}
             <Field as="select" name="available" className="form-select">
@@ -350,7 +371,7 @@ const UpdateCarForm = (props: Props) => {
           </div>
 
           <button type="submit" className="btn btn-primary">
-            Update Car
+            Aracı güncelle
           </button>
         </Form>
       )}

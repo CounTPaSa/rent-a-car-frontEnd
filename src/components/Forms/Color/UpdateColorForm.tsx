@@ -57,7 +57,7 @@ const UpdateColorForm = (props: Props) => {
         </div>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">
-            Name
+            İsim
           </label>
           <Field
             type="text"
@@ -70,7 +70,7 @@ const UpdateColorForm = (props: Props) => {
         </div>
         <div className="mb-3">
           <label htmlFor="code" className="form-label">
-            Code
+            Renk Kodu
           </label> 
           <Field
             type="text"
@@ -91,7 +91,7 @@ const UpdateColorForm = (props: Props) => {
           className="btn btn-primary"
           onClick={() => console.log("Button clicked")}
         >
-            Update
+            Güncelle
         </button>
         
       </Form>

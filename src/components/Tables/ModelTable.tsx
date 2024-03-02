@@ -48,13 +48,13 @@ const ModelTable = (props: Props) => {
     <>
       <table className="table table-hover table-borderless caption-top bg-white rounded mt-2">
         <caption>
-          <span className="cars-p">Models</span> {""}
+          <span className="cars-p">Modeller</span> {""}
           <button
             type="button"
             className="btn btn-primary"
             onClick={handleToggleAddModal}
           >
-            Add New Model
+            Yeni Model Ekle
           </button>{" "}
           {""}
           
@@ -62,8 +62,8 @@ const ModelTable = (props: Props) => {
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Brand</th>
+            <th scope="col">İsim</th>
+            <th scope="col">Marka</th>
           </tr>
         </thead>
         <tbody>
@@ -75,7 +75,7 @@ const ModelTable = (props: Props) => {
 
               <td>
                 <button type="button" className="btn btn-danger" onClick={() => handleDeleteModel(model.id)}>
-                  Delete
+                  Sil
                 </button>
               </td>
               <td>
@@ -84,7 +84,7 @@ const ModelTable = (props: Props) => {
                   className="btn btn-success"
                   onClick={() => handleToggleUpdateModal(model.id)}
                 >
-                  Update
+                  Güncelle
                 </button>
               </td>
             </tr>
@@ -93,7 +93,7 @@ const ModelTable = (props: Props) => {
       </table>
       <Modal show={showAddModal} onHide={handleToggleAddModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Add New Model</Modal.Title>
+          <Modal.Title>Yeni Model Ekle</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <AddModelForm />
@@ -103,7 +103,7 @@ const ModelTable = (props: Props) => {
 
       <Modal show={showUpdateModal} onHide={handleCloseUpdateModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Update Model</Modal.Title>
+          <Modal.Title>Model Güncelle</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <UpdateModelForm  selectedModelId={selectedModelId}/>

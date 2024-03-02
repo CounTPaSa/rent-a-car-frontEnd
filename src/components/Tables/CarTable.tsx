@@ -53,30 +53,30 @@ const CarTable = (props: Props) => {
     <>
       <table className="table table-hover table-borderless caption-top bg-white rounded mt-2">
         <caption>
-          <span className="cars-p">Cars</span> {""}
+          <span className="cars-p">Araçlar</span> {""}
           <button
             type="button"
             className="btn btn-primary"
             onClick={handleToggleAddModal}
           >
-            Add New Car
+            Yeni Araç Ekle
           </button>{" "}
           {""}
         </caption>
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">Brand</th>
+            <th scope="col">Marka</th>
             <th scope="col">Model</th>
-            <th scope="col">Plate</th>
-            <th scope="col">Color</th>
-            <th scope="col">Kilometer</th>
-            <th scope="col">Daily Price</th>
-            <th scope="col">Model Year</th>
-            <th scope="col">Car Type</th>
-            <th scope="col">Fuel Type</th>
-            <th scope="col">Transmission Type </th>
-            <th scope="col">Available</th>
+            <th scope="col">Plaka</th>
+            <th scope="col">Renk</th>
+            <th scope="col">Kilometre</th>
+            <th scope="col">Günlük Ücret</th>
+            <th scope="col">Model Yılı</th>
+            <th scope="col">Araç Tipi</th>
+            <th scope="col">Yakıt Tipi</th>
+            <th scope="col">Şanzıman Tipi </th>
+            <th scope="col">Müsait</th>
 
 
 
@@ -105,13 +105,13 @@ const CarTable = (props: Props) => {
                   className="btn btn-danger"
                   onClick={() => handleDeleteCar(car.id)}
                 >
-                  Delete
+                  Sil
                 </button>
               </td>
               <td>
                 <button type="button" className="btn btn-success"  onClick={() => handleToggleUpdateModal(car.id)}
 >
-                  Update
+                  Güncelle
                 </button>
               </td>
             </tr>
@@ -120,7 +120,7 @@ const CarTable = (props: Props) => {
       </table>
       <Modal show={showAddModal} onHide={handleToggleAddModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Add New Car</Modal.Title>
+          <Modal.Title>Yeni Araç Ekle</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <AddCarForm />
@@ -130,7 +130,7 @@ const CarTable = (props: Props) => {
 
       <Modal show={showUpdateModal} onHide={handleCloseUpdateModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Update Car</Modal.Title>
+          <Modal.Title>Araç Güncelle</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <UpdateCarForm selectedCarId={selectedCarId} />        </Modal.Body>

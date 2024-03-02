@@ -8,7 +8,7 @@ import { fetchRentals, getById } from "../../store/slices/rentalSlice";
 import { getByStringCode } from "../../store/slices/discountSlice";
 import { AddInvoiceRequest } from "../../models/invoices/requests/addInvoiceRequest";
 import { addInvoice } from "../../store/slices/invoiceSlice";
-import { Field, Form, Formik } from "formik";
+import { Field, Form, Formik, FormikHelpers } from "formik";
 import { toast } from "react-toastify";
 
 type Props = {};
@@ -91,19 +91,21 @@ const RentalConfirm = (props: Props) => {
  }
   
 
-  const handleSubmit = async (values: AddInvoiceRequest, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
-    try {
+ const handleSubmit = async (values: AddInvoiceRequest, { setSubmitting, resetForm }: FormikHelpers<AddInvoiceRequest>) => {
+  try {
       values.discountRate = discountValue ?? 0;
       values.totalPrice = totalPrice ?? 0;
       console.log("Form iletildi", values);
       await dispatch(addInvoice(values));
       toast.success("Ödemeniz başarıyla alınmıştır")
-    } catch (error: any) {
+      resetForm(); 
+  } catch (error: any) {
       console.log("Hata:", error);
-    } finally {
+  } finally {
       setSubmitting(false); 
-    }
-  };
+  }
+};
+
 
  
   return (

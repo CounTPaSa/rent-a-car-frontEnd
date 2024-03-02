@@ -54,7 +54,7 @@ const AddBrandForm = (props: Props) => {
         <Form>
           <div className="mb-3">
             <label htmlFor="name" className="form-label">
-              Name
+              İsim
             </label>
             <Field
               type="text"
@@ -67,7 +67,7 @@ const AddBrandForm = (props: Props) => {
           </div>
           <div className="mb-3">
             <label htmlFor="logopath" className="form-label">
-              LogoPath
+              Logo Yolu
             </label> 
             <Field
               type="text"
@@ -88,7 +88,7 @@ const AddBrandForm = (props: Props) => {
             className="btn btn-primary"
             onClick={() => console.log("Button clicked")}
           >
-            Add Brand
+            Marka Ekle
           </button>
         </Form>
       )}

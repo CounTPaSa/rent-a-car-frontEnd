@@ -60,13 +60,13 @@ const BrandTable = (props: Props) => {
     <>
       <table className="table table-hover table-borderless caption-top bg-white rounded mt-2">
         <caption>
-          <span className="cars-p">Brands</span> {""}
+          <span className="cars-p">Markalar</span> {""}
           <button
             type="button"
             className="btn btn-primary"
             onClick={handleToggleAddModal}
           >
-            Add New Brand
+           Yeni Marka Ekle
           </button>{" "}
           {""}
           
@@ -74,8 +74,8 @@ const BrandTable = (props: Props) => {
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">LogoPath</th>
+            <th scope="col">İsim</th>
+            <th scope="col">Logo yolu</th>
           </tr>
         </thead>
         <tbody>
@@ -87,7 +87,7 @@ const BrandTable = (props: Props) => {
 
               <td>
                 <button type="button" className="btn btn-danger" onClick={() => handleDeleteBrand(brand.id)}>
-                  Delete
+                  Sil
                 </button>
               </td>
               <td>
@@ -96,7 +96,7 @@ const BrandTable = (props: Props) => {
                   className="btn btn-success"
                   onClick={() => handleToggleUpdateModal(brand.id)}
                 >
-                  Update
+                  Güncelle
                 </button>
               </td>
             </tr>
@@ -105,7 +105,7 @@ const BrandTable = (props: Props) => {
       </table>
       <Modal show={showAddModal} onHide={handleToggleAddModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Add New Brand</Modal.Title>
+          <Modal.Title>Yeni Marka Ekle</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <AddBrandForm />
@@ -115,7 +115,7 @@ const BrandTable = (props: Props) => {
 
       <Modal show={showUpdateModal} onHide={handleCloseUpdateModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Update Brand</Modal.Title>
+          <Modal.Title>Markayı Güncelle</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <UpdateBrandForm selectedBrandId={selectedBrandId}  />
